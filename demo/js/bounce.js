@@ -1,19 +1,17 @@
-/**
- * Library that can make an element bounce
- * @returns {{init: init}}
- * @constructor
- */
-var Bounce = function(selector, settings) {
+var Bounce = function () {
+
     /**
      * Default settings for the module
      * @type {{selector: string, gravity: number}}
      */
-    var defaultsetting = {
-        selector: '.bounce'
+    var defaultSettings = {
+        selector: '.bounce',
+        gravity: 1,
+		movement: 1,
+		friction: 1,
+        updateSpeed: 1  //In milliseconds
     };
 
-	
-	
     /**
      * The bouncing element
      * @type {HTMLElement}
@@ -69,46 +67,41 @@ var Bounce = function(selector, settings) {
             speedX = -speedX;
         }
 
+
         updateElement();
     };
-
+	
     /**
      * Update the variables to the new reality
      */
     var update = function() {
-		
-		if (defaultSettings.gravity == 0 && defaultSettings.movement == 0){
-		console.log("triggered Gravity");
+         if (defaultSettings.gravity == 0 && defaultSettings.movement == 0){
 		move(speedX, speedY);
         speedY = 0;
 		speedX = 0;
 		}
 		else if (defaultSettings.gravity == 0){
-		console.log("triggered Gravity");
 		move(speedX, speedY);
         speedY = 0;
-		speedX += defaultSettings.movement * (defaultSettings.updateSpeed/100) * (2 - defaultSettings.friction);
+		speedX += defaultSettings.movement * (defaultSettings.updateSpeed) * (2 - defaultSettings.friction);
 		}
 		else if (defaultSettings.movement == 0){
-		console.log("triggered Movement");
 		move(speedX, speedY);
-        speedY += (1.2*(defaultSettings.gravity + 2)) * (defaultSettings.updateSpeed/100) * (2 - defaultSettings.friction);
+        speedY += (1.2*(defaultSettings.gravity + 2)) * (defaultSettings.updateSpeed) * (2 - defaultSettings.friction);
 		speedX = 0;
 		}
 		else {move(speedX, speedY);
         speedY += ((1.2*(defaultSettings.gravity + 2)) * (defaultSettings.updateSpeed) * (2 - defaultSettings.friction)/1000);
 		speedX += (defaultSettings.movement * (defaultSettings.updateSpeed) * (2 - defaultSettings.friction)/1000);
-		
-		
 	
-		}	
+			
+			
+			
+	  }
     };
 
-    /**
-     * Overwrite the properties of the first object with the properties of the second object if they exist
-     * @param {object} object1
-     * @param {object} object2
-     */
+	
+	
     var mergeObjects  = function(object1, object2) {
         for (var attrname in object1) {
             if(object2.hasOwnProperty(attrname)) {
@@ -124,18 +117,15 @@ var Bounce = function(selector, settings) {
      */
     var init = function(selector, settings) {
         mergeObjects(defaultSettings, settings || {});
-        selector = selector || defaultsetting.selector;
+        selector = selector || defaultSettings.selector;
         element = document.querySelector(selector);
         speedY = 0;
 		speedX = 0;
         timer = setInterval(update, defaultSettings.updateSpeed);
     };
 
-    init(selector, settings);
-
     //Return the functions that should be accessible from the outside. The rest is only accessible from within the object
     return {
         init: init
     };
-
 };

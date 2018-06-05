@@ -6,8 +6,10 @@ var Bounce = function () {
      */
     var defaultSettings = {
         selector: '.bounce',
-        gravity: 9.81,
-        updateSpeed: 1 //In milliseconds
+        gravity: 1,
+		movement: 1,
+		friction: 1,
+        updateSpeed: 1  //In milliseconds
     };
 
     /**
@@ -21,6 +23,7 @@ var Bounce = function () {
      * @type {number}
      */
     var speedY;
+	var speedX;
 
     /**
      * The timer that updates the model and the screen
@@ -59,6 +62,11 @@ var Bounce = function () {
         if(element.parentElement.clientHeight <= position.y + element.clientHeight) {
             speedY = -speedY;
         }
+		
+		if(element.parentElement.clientWidth <= position.x + element.clientWidth) {
+            speedX = -speedX;
+        }
+
 
         updateElement();
     };
@@ -67,8 +75,25 @@ var Bounce = function () {
      * Update the variables to the new reality
      */
     var update = function() {
-        move(0, speedY);
-        speedY += defaultSettings.gravity * (defaultSettings.updateSpeed/1000);
+         if (defaultSettings.gravity == 0 && defaultSettings.movement == 0);
+		move(speedX, speedY);
+        speedY = 0;
+		speedX = 0;
+		}
+		else if (defaultSettings.gravity == 0){
+		move(speedX, speedY);
+        speedY = 0;
+		speedX += defaultSettings.movement * (defaultSettings.updateSpeed/100) * (2 - defaultSettings.friction);
+		}
+		else if (defaultSettings.movement == 0){
+		move(speedX, speedY);
+        speedY += (1.2*(defaultSettings.gravity + 2)) * (defaultSettings.updateSpeed/100) * (2 - defaultSettings.friction);
+		speedX = 0;
+		}
+		else {move(speedX, speedY);
+        speedY += ((1.2*(defaultSettings.gravity + 2)) * (defaultSettings.updateSpeed) * (2 - defaultSettings.friction)/1000);
+		speedX += (defaultSettings.movement * (defaultSettings.updateSpeed) * (2 - defaultSettings.friction)/1000);
+	  }
     };
 
     var mergeObjects  = function(object1, object2) {
