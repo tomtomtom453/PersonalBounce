@@ -1,0 +1,24 @@
+{
+  "name": "bounce",
+  "version": "1.0.0",
+  "description": "A small library that can make a an element of your choosing bounce. Mainly created to show how to make a simple library.",
+  "main": "bounce.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/drkx/bounce.git"
+  },
+  "keywords": [
+    "simple",
+    "bounce",
+    "js-library"
+  ],
+  "author": "Luuk Derkx",
+  "license": "GPL-3.0",
+  "bugs": {
+    "url": "https://github.com/drkx/bounce/issues"
+  },
+  "homepage": "https://github.com/drkx/bounce#readme"
+}

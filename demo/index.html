@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+	<script src="js/variables.js" type="application/javascript"></script>
+    <script src="js/bounce.js" type="application/javascript"></script>
+    <link href="css/style.css" type="text/css" rel="stylesheet">
+</head>
+<body>
+	
+	<script>
+		function Color(x) {
+		x.style.backgroundColor = "green";
+			
+		}
+
+		function Transparent(x) {
+		x.style.backgroundColor = "red";
+		}
+	</script>
+	
+	<div class="form">
+	<form>
+	Gravity:
+	<input type="number" name="gravity" min="-.5" max="2.0" step="0.1" value="1" onmouseup="formChanged()">
+	Movement:
+	<input type="number" name="movement" min="-5" max="20" step="0.1" value="1" onchange="formChanged()">
+	UpdateSpeed:
+	<input type="number" name="updatespeed" min="-5" max="20" step="0.1" value="1" onchange="formChanged()">
+	Friction:
+	<input type="number" name="friction" min="-1" max="2" step="0.1" value="1" onchange="formChanged()">
+	</form>
+	<div>
+	
+    <div class="box"  >
+        <div class="bounce" id="bounce" onmouseover="Color(this)" onmouseout="Transparent(this)">
+           
+        </div>
+        
+    </div>
+	
+	
+    <script>
+        
+		
+		var  bounce = new Bounce();
+        bounce.init('.bounce2', {gravity: 5});
+		
+		
+		
+</script>
+
+    </script>
+</body>
+</html>
