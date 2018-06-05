@@ -70,12 +70,12 @@ var Bounce = function () {
 
         updateElement();
     };
-
+	
     /**
      * Update the variables to the new reality
      */
     var update = function() {
-         if (defaultSettings.gravity == 0 && defaultSettings.movement == 0);
+         if (defaultSettings.gravity == 0 && defaultSettings.movement == 0){
 		move(speedX, speedY);
         speedY = 0;
 		speedX = 0;
@@ -83,19 +83,25 @@ var Bounce = function () {
 		else if (defaultSettings.gravity == 0){
 		move(speedX, speedY);
         speedY = 0;
-		speedX += defaultSettings.movement * (defaultSettings.updateSpeed/100) * (2 - defaultSettings.friction);
+		speedX += defaultSettings.movement * (defaultSettings.updateSpeed) * (2 - defaultSettings.friction);
 		}
 		else if (defaultSettings.movement == 0){
 		move(speedX, speedY);
-        speedY += (1.2*(defaultSettings.gravity + 2)) * (defaultSettings.updateSpeed/100) * (2 - defaultSettings.friction);
+        speedY += (1.2*(defaultSettings.gravity + 2)) * (defaultSettings.updateSpeed) * (2 - defaultSettings.friction);
 		speedX = 0;
 		}
 		else {move(speedX, speedY);
         speedY += ((1.2*(defaultSettings.gravity + 2)) * (defaultSettings.updateSpeed) * (2 - defaultSettings.friction)/1000);
 		speedX += (defaultSettings.movement * (defaultSettings.updateSpeed) * (2 - defaultSettings.friction)/1000);
+	
+			
+			
+			
 	  }
     };
 
+	
+	
     var mergeObjects  = function(object1, object2) {
         for (var attrname in object1) {
             if(object2.hasOwnProperty(attrname)) {
@@ -114,6 +120,7 @@ var Bounce = function () {
         selector = selector || defaultSettings.selector;
         element = document.querySelector(selector);
         speedY = 0;
+		speedX = 0;
         timer = setInterval(update, defaultSettings.updateSpeed);
     };
 
