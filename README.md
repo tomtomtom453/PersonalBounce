@@ -1,41 +1,81 @@
-# bounce
-Simple demonstration of how you can setup a JavaScript library
-## Synopsis
+# S4BounceLibrary
 
-A small library that can make a an element of your choosing bounce
+S4BounceLibrary is gebouwd als aanvulling op Bounce.js, een library gemaakt door [Luuk Derkx](https://github.com/drkx/bounce).
 
-## Code Example
 
-The easiest way to use bounce is putting it in a variable and calling the init function on it. It will than target the element with class bounce on it
-```javascript
-//Initialize the first object without params so the default values are used
-var bounce = Bounce();
-bounce.init();
+## Documentation
+
+## Code
+Het is bij installatie van bounce belangrijk om het bounce element binnen een parent container te zetten. Hiermee worden de grenzen van het bounce element bepaald. 
+```html
+<div class="box"> <!-- de container waarin bounce zich bevindt -->
+        <div class="bounce" id="bounce"> </div> <--het bounce element zelf -->
+    </div>
+	
+    <script> <-- Het initiëren van het bounce element -->
+        var bounce = new Bounce();
+        bounce.init();
+    </script>
 ```
 
-If you want however you can use a custom selector and change the gravity and the update speed using a settings object
-```javascript
-//Initialize the second object with a different selector and a gravity of only to so it goes...much...slower
-var bounce2 = Bounce();
-bounce2.init('.bounce2', {gravity: 2, updateSpeed:2});
+## Existing functions
+De standaard functies van bounce.js
+
+### gravity:
+Met deze variabele kan de verticale snelheid van het element worden bepaald. Deze waarde moet bestaan uit een getal. Deze waarde kan tussen 0 en 10 worden ingesteld. De standaardwaarde is 1.
+```html
+<script>
+	// maakt een bounce element aan die valt met een snelheid van 2
+    var bounce = new Bounce();
+    bounce.init('.bounce', {gravity: 2});
+</script>
 ```
 
-## Demo
-See bounce [demo](http://i874261.iris.fhict.nl/s4/bounce/demo)
+### updateSpeed
+Met deze variabele kun je de snelheid aangeven waarmee je bounce object update. De standaard is 1 milliseconde. Dit kan aangepast worden tussen de 0 en de 10.
+```html
+<script>
+    // maakt een bounce element aan die om de 5 milliseconde update
+    var bounce = new Bounce();
+    bounce.init('bounce1', {updateSpeed: 5});
+</script>
+```
 
-## Motivation
+## Toegevoegde functies
+deze functies zijn door [Tom Korsten](https://github.com/tomtomtom453)gemaakt. 
 
-This library was created as a small example on how you can create a library
+### movement:
+Deze functie zorgt ervoor dat het bounce element niet meer alleen omhoog en omlaag bounct, maar ook horizontaal over de pagina beweegt. De standaardwaarde hiervoor is 1 . Dit kan aangepast worden tussen de 0 en de 10.
+```html
+<script>
+    //maakt een een element aan wat zich zijwaarts beweegt met een snelheid van 2
+    var bounce = new Bounce();
+    bounce.init('bounce1', {movement: 2});
+</script>
+```
 
-## Installation
+### friction:
+Deze functie zorgt ervoor dat het bounce element niet meer met volledige snelheid beweegt, maar dat deze friction het element afremt. De standaardwaarde hiervoor is 0.5 . Dit kan aangepast worden tussen de 0 en de 2.
+```html
+<script>
+    //maakt een een element aan wat zich langzamer voortbeweegt, met een friction van 1.5
+    var bounce = new Bounce();
+    bounce.init('bounce1', {friction: 1.5});
+</script>
+```
 
-Just download bounce.js, put it in the head of your page and call it. Make sure the parent of the targeted element has a hight otherwise there's not much room to bounce
+## Demo 
+---
+Een demo is [hier] (http://i369005.hera.fhict.nl/PersonalBounce/demo/) te zien.
 
-## API Reference
+## Motivatie
+---
+Ik heb deze toevoegingen gedaan omdat ik deze mogelijkheden miste in de orginele eerste versie van bounce.
 
-### init
 
-| Parameters    | Type          | Optional | Description                                                |
-|:-------------:|:-------------:|:--------:| ---------------------------------------------------------- |
-| selector      | string        | true     | Css selector that targets the element that needs to bounce |
-| settings      | object        | true     | Object containing settings `gravity` and/or `updateSpeed`  |
+## Installatie
+---
+Download het bounce.js bestand, stop het in je hoofdfolder, en  roep het aan op de pagina(s) waar je het wilt gebruiken.
+
+Download of clone de repository, bekijk het voorbeeld in de demo. 
+Voeg de bounce.js file toe aan je hoofdfolder of js file en roep het aan in de code.
