@@ -42,7 +42,7 @@ Met deze variabele kun je de snelheid aangeven waarmee je bounce object update. 
 ```
 
 ## Toegevoegde functies
-deze functies zijn door [Tom Korsten](https://github.com/tomtomtom453)gemaakt. 
+deze functies zijn door [Tom Korsten](https://github.com/tomtomtom453) gemaakt. 
 
 ### movement:
 Deze functie zorgt ervoor dat het bounce element niet meer alleen omhoog en omlaag bounct, maar ook horizontaal over de pagina beweegt. De standaardwaarde hiervoor is 1 . Dit kan aangepast worden tussen de 0 en de 10.
@@ -66,7 +66,7 @@ Deze functie zorgt ervoor dat het bounce element niet meer met volledige snelhei
 
 ## Demo 
 ---
-Een demo is [hier] (http://i369005.hera.fhict.nl/PersonalBounce/demo/) te zien.
+Een demo is [hier](http://i369005.hera.fhict.nl/PersonalBounce/demo/) te zien.
 
 ## Motivatie
 ---
