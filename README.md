@@ -75,7 +75,5 @@ Ik heb deze toevoegingen gedaan omdat ik deze mogelijkheden miste in de orginele
 
 ## Installatie
 ---
-Download het bounce.js bestand, stop het in je hoofdfolder, en  roep het aan op de pagina(s) waar je het wilt gebruiken.
-
 Download of clone de repository, bekijk het voorbeeld in de demo. 
 Voeg de bounce.js file toe aan je hoofdfolder of js file en roep het aan in de code.
